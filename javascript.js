@@ -34,12 +34,12 @@ const submitTodo = e => {
     saveAndRender();
   };
 
-  //takes  ListName value, sets dictionary parameters values to match the next id 
+// Generates a new task item and returns it as a dictionary with the corresponding values.
   const createTask = name => {
     let id = todos.length + 1;
     return { id: id.toString(), name: name, completed: false };
   };
-//Combines the save and the render function
+// Combines the save and the render function
 const saveAndRender = () => {
     saveToLocalstorage();
     renderTasks();
@@ -49,7 +49,7 @@ const saveAndRender = () => {
     localStorage.setItem(LOCAL_STORAGE_LIST, JSON.stringify(todos));
   };  
 
-// WARNING I NEED TO VERIFY WHAT THIS PAR DOES, WHY IT ASKS OR CREATES SELECTEDLIST WHT PAR OF THE CODE POINTS TO THE UL
+// Clears the list container UL and fills it with the values of the todo dictionary
 const renderTasks = selectedList => {
     clearElement(listContainer);
     todos.forEach(todo => {
@@ -92,6 +92,7 @@ const renderTasks = selectedList => {
       })
     }
   };
+  
 // Event conections
 newTodoForm.addEventListener('submit', submitTodo);
 listContainer.addEventListener('click', deleteTodo);
